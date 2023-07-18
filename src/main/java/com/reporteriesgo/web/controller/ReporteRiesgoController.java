@@ -2,11 +2,11 @@ package com.reporteriesgo.web.controller;
 
 import com.reporteriesgo.persisrence.entity.ReporteRiesgo;
 import com.reporteriesgo.persisrence.repository.ReporteRiesgoRepository;
+import com.reporteriesgo.service.dto.ReporteRiesgoDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import com.reporteriesgo.service.ReporteRiesgoService;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +20,12 @@ public class ReporteRiesgoController  {
     }
 
 
-    @GetMapping
+    @PostMapping("/{fecha}")
+    public ResponseEntity<List<ReporteRiesgo>> obtenerReporteRiesgo (@RequestBody ReporteRiesgoDto dto){
+        return ResponseEntity.ok(this.reporteRiesgoRepository.obtenerReporteRiesgo(dto.getFecha()));
+    }
+
+    /*
     public List<ReporteRiesgo> obtenerReporteRiesgo(Date fecha) {
         return reporteRiesgoRepository.obtenerReporteRiesgo(fecha);
     }

@@ -2,6 +2,8 @@ package com.reporteriesgo.service;
 
 import com.reporteriesgo.persisrence.entity.ReporteRiesgo;
 import com.reporteriesgo.persisrence.repository.ReporteRiesgoRepository;
+import com.reporteriesgo.service.dto.ReporteRiesgoDto;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -21,8 +23,10 @@ public class ReporteRiesgoService {
         this.reporteRiesgoRepository = reporteRiesgoRepository;
     }
 
-    public List<ReporteRiesgo> obtenerReporteRiesgo(Date fecha) {
-        return reporteRiesgoRepository.obtenerReporteRiesgo(fecha);
+    @Transactional
+    public List<ReporteRiesgo> obtenerReporteRiesgo(ReporteRiesgoDto reporteRiesgoDto) {
+        //return reporteRiesgoRepository.obtenerReporteRiesgo(fecha);
+        return  this.reporteRiesgoRepository.obtenerReporteRiesgo(reporteRiesgoDto.getFecha());
     }
 
 
