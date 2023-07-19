@@ -1,18 +1,25 @@
 package com.reporteriesgo.persisrence.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.ResultSet;
 import java.util.Date;
-
+import java.util.List;
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
-@NoArgsConstructor
+@NamedStoredProcedureQuery(
+        name = "ReporteRiesgo.procedureName",
+        procedureName = "SP_REPORTE_RIESGO",
+        parameters = {
+                @StoredProcedureParameter(name = "fecha", mode = ParameterMode.IN, type = Date.class),
+                @StoredProcedureParameter(name = "resultado", mode = ParameterMode.REF_CURSOR, type = ResultSet.class)
+        }
+)
 public class ReporteRiesgo {
 
 
