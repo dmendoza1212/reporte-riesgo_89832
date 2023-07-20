@@ -14,7 +14,7 @@ import java.util.List;
 @Entity
 @NamedStoredProcedureQuery(
         name = "ReporteRiesgo.procedureName",
-        procedureName = "SP_REPORTE_RIESGO",
+        procedureName = "SP_CONSULTA_TCHN",
         parameters = {
                 @StoredProcedureParameter(name = "fecha", mode = ParameterMode.IN, type = Date.class),
                 @StoredProcedureParameter(name = "resultado", mode = ParameterMode.REF_CURSOR, type = ResultSet.class)

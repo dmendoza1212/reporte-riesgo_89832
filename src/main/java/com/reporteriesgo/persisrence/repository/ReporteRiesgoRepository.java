@@ -13,7 +13,7 @@ import java.util.List;
 public interface ReporteRiesgoRepository extends JpaRepository<ReporteRiesgo, String> {
     @Transactional
 
-    @Procedure(value = "PKG_RIESGOS.sp_Reporte_Riesgo",outputParameterName ="cursorType" )
+    @Procedure(value = "SP_CONSULTA_TCHN",outputParameterName ="cursorType" )
      List<ReporteRiesgo> obtenerReporteRiesgo(
             @Param("fecha") Date fecha
     );
